@@ -1,11 +1,16 @@
 const express = require('express');
 const app = express();
 
-const controllers = require('./controllers/')
+const swagger = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
 
-app.use(express.urlencoded({extended: true}))
+const controllers = require('./controllers/');
 
-app.use(express.json())
+app.use(express.urlencoded({extended: true}));
+
+app.use(express.json());
+
+app.use('/', swagger.serve, swagger.setup(swaggerDocument));
 
 app.get('/api/all/:type', async function (req, res) {
     let type = req.params.type;

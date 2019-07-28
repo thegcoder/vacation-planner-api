@@ -1,0 +1,8 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Vacation Planner API",
+    "description": "The API that serves the Vacation Planner App",
+    "version": "1.0.0"
+  }
+}
