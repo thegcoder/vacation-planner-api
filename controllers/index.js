@@ -58,11 +58,11 @@ async function update(type, id, object) {
     let data = Promise.resolve(false);
     switch (type) {
         case 'destinations':
-            data = await Destinations.findByIdAndUpdate(id, object, {new: true});
+            data = await Destinations.findByIdAndUpdate(id, object, {new: true, upsert: true});
             return data;
             break;
         case 'users':
-            data = await Users.findByIdAndUpdate(id, object), {new: true};
+            data = await Users.findByIdAndUpdate(id, object, {new: true, upsert: true});
             return data;
             break;
         default:
