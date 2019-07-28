@@ -9,9 +9,6 @@ const DestinationSchema = new mongoose.Schema({
     city: {
         type: String
     },
-    state: {
-        type: String
-    },
     description: String,
     type: {
         type: String,

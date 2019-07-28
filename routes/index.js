@@ -30,13 +30,39 @@ const routes = (app, controllers) => {
 
       res.json(value);
   });
-
+  /**
+  * @swagger
+  *
+  * /api/create/{type}:
+  *    post:
+  *      summary: Creates destinations or users
+  *      consumes:
+  *        - application/json
+  *      parameters:
+  *        - name: type
+  *          description: The destination or user name
+  *          in: path
+  *          type: string
+  *        - name: name
+  *          description: The destination or user
+  *          in: body
+  *          schema:
+  *            type: object
+  *            properties:
+  *              name:
+  *                type: string
+  *              email:
+  *                type: string
+  *      responses:
+  *        200:
+  *          description: all values
+  */
   app.post('/api/create/:type', async function (req, res) {
       let type = req.params.type;
       let data = req.body;
       let value = {};
 
-      console.log(`Create ${type}`);
+      console.log(data);
 
       try {
         value = await controllers.create(type, data);

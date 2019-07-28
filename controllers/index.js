@@ -3,7 +3,6 @@ const { Destinations, Users } = require('../models');
 // Get All
 async function all(type) {
     let data = Promise.resolve(false);
-    console.log(`Type: ${type}`);
     switch (type) {
         case 'destinations':
             data = await Destinations.find({});
@@ -21,6 +20,8 @@ async function all(type) {
 // Create Operations
 async function create(type, object) {
     let data = Promise.resolve(false);
+    console.log(`Type: ${type}`);
+    console.log(object);
     switch (type) {
         case 'destinations':
             data = await Destinations.create(object);
