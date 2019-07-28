@@ -20,8 +20,6 @@ const routes = (app, controllers) => {
       let type = req.params.type;
       let value = {};
 
-      console.log(`Get all ${type}`);
-
       try {
         value = await controllers.all(type);
       } catch (error) {
@@ -36,33 +34,24 @@ const routes = (app, controllers) => {
   * /api/create/{type}:
   *    post:
   *      summary: Creates destinations or users
-  *      consumes:
+  *      produces:
   *        - application/json
   *      parameters:
   *        - name: type
   *          description: The destination or user name
   *          in: path
   *          type: string
-  *        - name: name
+  *        - name: data
   *          description: The destination or user
   *          in: body
-  *          schema:
-  *            type: object
-  *            properties:
-  *              name:
-  *                type: string
-  *              email:
-  *                type: string
   *      responses:
   *        200:
-  *          description: all values
+  *          description: a new destination or user
   */
   app.post('/api/create/:type', async function (req, res) {
       let type = req.params.type;
       let data = req.body;
       let value = {};
-
-      console.log(data);
 
       try {
         value = await controllers.create(type, data);
@@ -72,7 +61,27 @@ const routes = (app, controllers) => {
 
       res.json(value);
   });
-
+  /**
+  * @swagger
+  *
+  * /api/read/{type}/{id}:
+  *    get:
+  *      description: View all destinations or users
+  *      produces:
+  *        - application/json
+  *      parameters:
+  *        - name: type
+  *          description: The destination or user name
+  *          in: path
+  *          type: string
+  *        - name: id
+  *          description: The id of the destination or user
+  *          in: path
+  *          type: string
+  *      responses:
+  *        200:
+  *          description: Get a destination or user
+  */
   app.get('/api/read/:type/:id', async function (req, res) {
       let type = req.params.type;
       let id = req.params.id;
@@ -88,7 +97,30 @@ const routes = (app, controllers) => {
 
       res.json(value);
   });
-
+  /**
+  * @swagger
+  *
+  * /api/update/{type}/{id}:
+  *    post:
+  *      summary: Creates destinations or users
+  *      produces:
+  *        - application/json
+  *      parameters:
+  *        - name: type
+  *          description: The destination or user name
+  *          in: path
+  *          type: string
+  *        - name: id
+  *          description: The destination or user id
+  *          in: path
+  *          type: string
+  *        - name: name
+  *          description: The destination or user
+  *          in: body
+  *      responses:
+  *        200:
+  *          description: a new destination or user
+  */
   app.post('/api/update/:type/:id', async function (req, res) {
       let type = req.params.type;
       let id = req.params.id;
@@ -105,7 +137,30 @@ const routes = (app, controllers) => {
 
       res.json(value);
   });
-
+  /**
+  * @swagger
+  *
+  * /api/delete/{type}/{id}:
+  *    post:
+  *      summary: Creates destinations or users
+  *      produces:
+  *        - application/json
+  *      parameters:
+  *        - name: type
+  *          description: The destination or user name
+  *          in: path
+  *          type: string
+  *        - name: id
+  *          description: The destination or user id
+  *          in: path
+  *          type: string
+  *        - name: name
+  *          description: The destination or user
+  *          in: body
+  *      responses:
+  *        200:
+  *          description: a new destination or user
+  */
   app.post('/api/delete/:type/:id', async function (req, res) {
       let type = req.params.type;
       let id = req.params.id;

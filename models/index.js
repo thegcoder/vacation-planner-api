@@ -24,7 +24,7 @@ const UserSchema = new mongoose.Schema({
         unique: true
     },
     email: String,
-    requirements: [],
+    destinations: [],
     type: {
         type: String,
         default: 'user'
