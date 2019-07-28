@@ -9,6 +9,8 @@ const controllers = require('./controllers');
 
 app.use(cors());
 
+app.set('etag', false);
+
 app.use(express.urlencoded({extended: true}));
 
 app.use(express.json());
