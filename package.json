@@ -1,5 +1,5 @@
 {
-  "name": "vacation-planner-server",
+  "name": "vacation-planner-api",
   "version": "1.0.0",
   "description": "The API for the vacation-planner-app",
   "main": "index.js",
