@@ -10,6 +10,7 @@ const DestinationSchema = new mongoose.Schema({
         type: String
     },
     description: String,
+    imageUrl: String,
     type: {
         type: String,
         default: 'destination'
@@ -24,6 +25,7 @@ const UserSchema = new mongoose.Schema({
         unique: true
     },
     email: String,
+    imageUrl: String,
     destinations: [],
     type: {
         type: String,
